@@ -1,0 +1,15 @@
+research_task:
+  description: >
+    Conduzir uma pequisa sobre {topic}
+    Encontre as informações mais relevantes e interessantes.
+  expected_output: >
+    Uma lista de números com dois tópicos sobre {topic}
+  agent: researcher
+
+reporting_task:
+  description: >
+    Resumir todo contexto visualizado sobre o assunto e então retornar um relatório detalhado.
+  expected_output: >
+    Um resumo completo com os principais tópicos, cada um com uma seção completa de informações.
+    Formatado em markdown sem '```'
+  agent: reporting_analyst

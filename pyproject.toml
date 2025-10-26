@@ -1,0 +1,24 @@
+[project]
+name = "criador_artigo_web"
+version = "0.1.0"
+description = "criador_artigo_web using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.2.0"
+]
+
+[project.scripts]
+criador_artigo_web = "criador_artigo_web.main:run"
+run_crew = "criador_artigo_web.main:run"
+train = "criador_artigo_web.main:train"
+replay = "criador_artigo_web.main:replay"
+test = "criador_artigo_web.main:test"
+run_with_trigger = "criador_artigo_web.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
