@@ -1,4 +1,5 @@
-User name is John Doe.
-User is an AI Engineer.
-User is interested in AI Agents.
-User is based in San Francisco, California.
+Essa é um arquivo de base de conhecimento para meu agente
+Caso o desenvolvedor queira utilizar, basta referencia-lo no
+Arquivo crew.py, nesse momento não estaremos utilizano, talvez futuramente.
+
+Link para mais específicações sobre Knowledge: https://docs.crewai.com/en/concepts/knowledge#what-is-knowledge

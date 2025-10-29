@@ -3,13 +3,15 @@ research_task:
     Conduzir uma pequisa sobre {topic}
     Encontre as informações mais relevantes e interessantes.
   expected_output: >
-    Uma lista de números com dois tópicos sobre {topic}
-  agent: researcher
+    Retornar um modelo pydantic sobre {topic}, com titulo, resumo em texto simples, url, timestamp e fonte.
+  agent: researcher_agent
 
-reporting_task:
+writing_task:
   description: >
-    Resumir todo contexto visualizado sobre o assunto e então retornar um relatório detalhado.
+    Escrever um resumo detalhado sobre {topic} com base nas informações fornecidas.
+    O Resumo deve ter no mínimo 300 palavras e ser bem estruturado.
   expected_output: >
-    Um resumo completo com os principais tópicos, cada um com uma seção completa de informações.
-    Formatado em markdown sem '```'
-  agent: reporting_analyst
+    Retornar um artigo estruturado em formato JSON, com suas respectivas específicações.
+  agent: writer_agent
+  inputs:
+    researcher_output: research_task.output
