@@ -6,6 +6,8 @@ from typing import List
 from crewai import LLM
 # Importando ferramentas customizadas
 from .tools.wiki_tool import WikiTool
+from .tools.output_tool import ReportOutputTool
+
 #Importando módulos para lidar com as váriaveis de ambiente
 import os
 from dotenv import load_dotenv
@@ -20,7 +22,7 @@ MODEL = os.getenv("MODEL") #Aqui o modelo de LLM que vai utilizar, nesse projeto
 llm = LLM(
     model=MODEL, # Modelo de linguagem que vai utilizar
     temperature=0.3, #Controlando as respostas do modelo. Quanto maior o valor, mais variada a respostas.
-    api_key=MODEL #Aqui você coloca a sua API key do google, obrigatório para 
+    api_key=API_KEY #Aqui você coloca a sua API key do google, obrigatório para 
                                                       #modelos Gemini. Para criar uma API key: https://aistudio.google.com/u/1/api-keys
 )
 
@@ -51,10 +53,12 @@ class CriadorArtigoWeb():
     
     @agent
     def writer_agent(self) -> Agent:
+        report_tool = ReportOutputTool()
         return Agent(
             config=self.agents_config['writer_agent'], # type: ignore[index]
             verbose=True,
             llm=llm,
+            tools= [report_tool] #Aqui adiciona a tool, seja customizada ou as nativas do crewai
         )
 
     # Aqui estou adicionando as taks que o crew irá executar, também do .YAML da pasta /config

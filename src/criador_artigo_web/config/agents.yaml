@@ -40,7 +40,12 @@ writer_agent:
           "body": "Corpo do artigo...",
           "conclusion": "Conclusão do artigo...",
           "source": "Fonte das informações..."
+          "time-stamp": "YYYY-MM-DD HH:MM:SS"
         }
         Restrições importantes:
         - Garanta que o texto final tenha no mínimo 300 palavras.
         - Não inclua raciocínio na respostas nem as etapas de pensamento na resposta, apenas o JSON com o conteúdo solicitado.
+  tools: 
+    - type: output_tool
+      name: ReportOutputTool
+      description: Ferramenta que formata o output final do artigo em JSON.
