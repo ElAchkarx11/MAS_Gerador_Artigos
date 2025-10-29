@@ -6,7 +6,7 @@ from typing import List
 from crewai import LLM
 # Importando ferramentas customizadas
 from .tools.wiki_tool import WikiTool
-from .tools.output_tool import ReportOutputTool
+from .tools.output_tool import ReportOutputModel
 
 #Importando módulos para lidar com as váriaveis de ambiente
 import os
@@ -53,12 +53,11 @@ class CriadorArtigoWeb():
     
     @agent
     def writer_agent(self) -> Agent:
-        report_tool = ReportOutputTool()
+
         return Agent(
             config=self.agents_config['writer_agent'], # type: ignore[index]
             verbose=True,
             llm=llm,
-            tools= [report_tool] #Aqui adiciona a tool, seja customizada ou as nativas do crewai
         )
 
     # Aqui estou adicionando as taks que o crew irá executar, também do .YAML da pasta /config
@@ -74,6 +73,7 @@ class CriadorArtigoWeb():
     def writing_task(self) -> Task:
         return Task(
             config=self.tasks_config['writing_task'], # type: ignore[index]
+            output_json=ReportOutputModel, #Define que a saída dessa task será em formato JSON, utilizando a tool criada para isso
             output_file='report.md' #Define o nome do arquivo de saída gerado por essa task
         )
 

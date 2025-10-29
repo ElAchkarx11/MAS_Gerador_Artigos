@@ -5,7 +5,7 @@ description = "criador_artigo_web using crewAI"
 authors = [{ name = "Your Name", email = "you@example.com" }]
 requires-python = ">=3.10,<3.14"
 dependencies = [
-    "crewai[tools]==1.2.0"
+    "crewai[google-genai,tools]==1.2.0",
 ]
 
 [project.scripts]
