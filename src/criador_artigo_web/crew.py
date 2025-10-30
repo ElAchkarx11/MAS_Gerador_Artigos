@@ -6,7 +6,7 @@ from typing import List
 from crewai import LLM
 # Importando ferramentas customizadas
 from .tools.wiki_tool import WikiTool
-from .tools.output_tool import ReportOutputModel
+from .models.output_model import ReportOutputModel
 
 #Importando módulos para lidar com as váriaveis de ambiente
 import os

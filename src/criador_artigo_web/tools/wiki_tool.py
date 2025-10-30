@@ -2,10 +2,18 @@ from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
 import requests
 
+#Importando módulos para lidar com as váriaveis de ambiente
+import os
+from dotenv import load_dotenv
+
+load_dotenv() # Carrega as variáveis de ambiente do arquivo .env(Você precisa criar as suas variáveis de ambiente lá)
+
+USER_AGENT = os.getenv("USER_AGENT")
+
 #Criando o modelo de input para a ferramenta
 class WikiToolInput(BaseModel):
     # Query String para pesquisa na WIkipedia
-    termo: str = Field(..., description="Query string para pesquisa na Wikipedia")
+    topic: str = Field(..., description="Query string para pesquisa na Wikipedia")
 
 #Criando um modelo de Output da ferramenta
 class WikiToolOutput(BaseModel):
@@ -18,15 +26,15 @@ class WikiToolOutput(BaseModel):
 class WikiTool(BaseTool): 
     name: str = "WikiTool" #Define o nome da ferramenta (Será utilizada pelo agente)
     description: str = "Ferramenta que será utilizada para buscar informações na Wikipedia." #Descrição da ferramenta, importante para o agente
-    args_schema: type[BaseModel] = WikiToolInput #Define o modelo de input que a ferramenta recebe, nesse caso somente um input "Termo"
-    def _run(self, termo: str) -> WikiToolOutput:#Aqui é a implementação da lógica, referenciando o output criado dessa ferramenta
+    args_schema: type[BaseModel] = WikiToolInput #Define o modelo de input que a ferramenta recebe, nesse caso somente um input "topic"
+    def _run(self, topic: str) -> WikiToolOutput:#Aqui é a implementação da lógica, referenciando o output criado dessa ferramenta
         #Tratando possíveis exceções que podem ocorrer
         try:
             """Método que implementa a lógica da ferramenta."""
             endpoint = "https://pt.wikipedia.org/w/api.php" #A API pública da Wikipedia, é o endpoint padrão para consultas. 
                                                             # O "pt" representa a base em português, existem outras bases, como "en" para inglês.
             headers = { 
-                "User-Agent": "CriadorArtigoWeb/1.0 (+https://github.com/ElAchkarx11)" #Por questões políticas de uso da API, a própria recomenda
+                "User-Agent": USER_AGENT #Por questões políticas de uso da API, a própria recomenda
                                                                                         #a utilização de um User-Agent personalizado para identificar a 
                                                                                         # aplicação que está fazendo as requisições.
             }
@@ -38,7 +46,7 @@ class WikiTool(BaseTool):
             search_params = {
                 "action": "query", # Parâmetro: Obtem dados sobre as páginas da Wikipedia
                 "list": "search", # Parâmetro: Realiza uma busca por texto completo
-                "srsearch": termo, # Parâmetro: Termo de busca fornecido pelo usuário
+                "srsearch": topic, # Parâmetro: topic de busca fornecido pelo usuário
                 "format": "json" # Parâmetro: Formato da resposta (JSON)
             }
 

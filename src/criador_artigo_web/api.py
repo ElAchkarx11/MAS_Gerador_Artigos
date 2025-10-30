@@ -19,7 +19,7 @@ app = FastAPI(title="Criador de Artigos Web API") #Título de nossa aplicação 
 
 #Definindo o modelo de dados para a requisição e entrada de dados
 class ArticleRequest(BaseModel):
-    termo: str
+    topic: str
 #Definindo a rota raiz que redireciona para a documentação automática
 @app.get("/")
 async def root():
@@ -29,7 +29,7 @@ async def root():
 @app.post("/gerar_artigo")
 async def generate_article(request: ArticleRequest):
     inputs = {
-        "topic": request.termo, # Usando o termo fornecido na requisição
+        "topic": request.topic, # Usando o topic fornecido na requisição
         "current_year": str(datetime.now().year) # Obtendo o ano atual
     }
     

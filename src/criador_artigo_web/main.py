@@ -22,7 +22,7 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': TOPIC, # O tópico que deseja pesquisar e criar o artigo. Será utilizado como "termo" na WikiTool.
+        'topic': TOPIC, # O tópico que deseja pesquisar e criar o artigo. Será utilizado como "topic" na WikiTool.
         'current_year': str(datetime.now().year) # A variável do ano atual, para referenciar no artigo.
         #Caso seja necessário, adicione mais varíaveis de input aqui como desejar, desde que estejam presentes nas tasks e agentes.
     }
