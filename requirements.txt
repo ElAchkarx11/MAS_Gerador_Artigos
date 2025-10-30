@@ -1,0 +1,18 @@
+# Framework de orquestração de agentes de IA
+crewai
+# Framework de orquestração requisitado pelo sistema para modelar o Gemini
+crewai[google-genai]
+# Ferramentas pré-construídas para agentes de IA
+crewai-tools
+# Validação de dados de entrada com anotações de tipo
+pydantic>=2.12.3  # Versão mais recente encontrada (outubro de 2025)
+# Criação de endpoints HTTP rápidos e com documentação automática
+fastapi>=0.120.2  # Versão mais recente encontrada (outubro de 2025)
+# Servidor ASGI para rodar o FastAPI
+uvicorn>=0.38.0  # Versão mais recente encontrada (outubro de 2025)
+# Framework de testes
+pytest>=8.4.2  # Versão mais recente encontrada (setembro de 2025)
+# Para requisições baseadas em URLs (alternativa ao httpx, se necessário)
+requests
+# Carregamento de variáveis de ambiente de um arquivo .env
+python-dotenv>=1.2.1  # Versão mais recente encontrada (outubro de 2025)
