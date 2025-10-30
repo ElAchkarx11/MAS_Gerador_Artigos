@@ -12,7 +12,7 @@ from datetime import datetime
 """
     Para rodar essa api, é necessário ter instalado o FastAPI e o Uvicorn.
     E para rodar o servidor, utilize o comando:
-        uvicorn criador_artigo_web.api:app --reload
+        uvicorn src.criador_artigo_web.api:app --reload
 """
 
 app = FastAPI(title="Criador de Artigos Web API") #Título de nossa aplicação FastAPI
