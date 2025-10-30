@@ -107,12 +107,10 @@ Nessa seção será demonstrado como acessar e executar o código do projeto.
    # Clone o repositório via Bash
    git clone https://github.com/ElAchkarx11/MAS_Gerador_Artigos.git
 
-   # Acesse o arquivo principal do projeto
-   cd criador_artigo_web 
    ```
 2. Instale as dependências:
    ```
-   pip install -r requeriremets.txt
+   pip install -r requirements.txt
    ```
 3. Crie um arquivo ***.env*** e configure as *variáveis de ambiente*, exemplo:
     ```
@@ -127,7 +125,7 @@ Nessa seção será demonstrado como acessar e executar o código do projeto.
    Lembrando que para a aplicação local, é necessário altera a variável *"TOPIC"*, presente no arquivo *main.py**.
 5. Caso queira executar via API, execute a API do ***FastAPI***:
     ```
-    uvicorn criador_artigo_web.api:app --reload
+    uvicorn src.criador_artigo_web.api:app --reload
     ```
 6. Acesse a documentação iterativa:
     ```
@@ -152,6 +150,11 @@ Nessa seção será demonstrado como acessar e executar o código do projeto.
       }
     }
    ```
+   Possível erro:
+   ```
+   429 Resource_exhausted
+   ```
+   Esse erro significa que o modelo LLM chegou ao limite de utilização, a solução possível é a de alterar o modelo ou a versão da LLM.
    
 ## Testes e Validações
 
